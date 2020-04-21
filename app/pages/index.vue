@@ -4,6 +4,13 @@
       <div slot="header" class="clearfix">
         <span>ログイン</span>
       </div>
+      <form>
+        <div class="form-content">
+          <span>ユーザー ID</span>
+          <el-input v-model="formData.id" placeholder />
+        </div>
+        <div class="form-content"></div>
+      </form>
     </el-card>
   </section>
 </template>
