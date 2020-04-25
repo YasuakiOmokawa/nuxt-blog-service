@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     buttonText() {
-      return this.isCreateMode ? "新規登録" : "ログイン"
+      return this.isCreateMode ? "新規登録する" : "ログインする"
     }
   }
 }
