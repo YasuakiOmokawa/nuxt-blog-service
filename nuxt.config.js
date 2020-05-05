@@ -44,7 +44,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: "https://nuxt-blog-service-5d322.firebaseio.com"
+  },
   /*
    ** Build configuration
    */
@@ -54,5 +56,8 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  router: {
+    middleware: ["auth-cookie"]
   }
 };
