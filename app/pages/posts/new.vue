@@ -16,6 +16,7 @@
     </el-card>
   </section>
 </template>
+
 <script>
 import { mapGetters, mapActions } from "vuex"
 
@@ -35,7 +36,16 @@ export default {
     ...mapGetters(["user"])
   },
   methods: {
-    publish() {}
+    async publish() {
+      const payload = {
+        user: this.user,
+        ...this.formData
+      }
+      await this.publishPost({ payload })
+      this.$router.push("/posts")
+    },
+    ...mapActions("users", ["updateUser"]),
+    ...mapActions("posts", ["publishPost"])
   }
 }
 </script>
