@@ -34,4 +34,10 @@ export const actions = {
     ]);
     commit("addPost", { post });
   }
+  async fetchPosts({commit}) {
+    const posts = await this.$axios.$get(`/posts.json`)
+    commit('clearPosts')
+    Object.entries(posts)
+      .reverse()
+  }
 };
