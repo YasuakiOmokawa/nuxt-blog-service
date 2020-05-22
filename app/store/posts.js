@@ -39,5 +39,13 @@ export const actions = {
     commit('clearPosts')
     Object.entries(posts)
       .reverse()
+      .forEach(([id, content])) => {
+        commit('addPost', {
+          post: {
+            id,
+            ...content
+          }
+        })
+      }
   }
 };
