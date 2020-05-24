@@ -21,6 +21,20 @@ export const mutations = {
 };
 
 export const actions = {
+  async fetchPosts({ commit }) {
+    const posts = await this.$axios.$get(`/posts.json`);
+    commit("clearPosts");
+    Object.entries(posts)
+      .reverse()
+      .forEach(([id, content]) =>
+        commit("addPost", {
+          post: {
+            id,
+            ...content
+          }
+        })
+      );
+  },
   async publishPost({ commit }, { payload }) {
     const user = await this.$axios.$get(`/users/${payload.user.id}.json`);
     const post_id = (await this.$axios.$post("/posts.json", payload)).name;
@@ -33,19 +47,5 @@ export const actions = {
       putData
     ]);
     commit("addPost", { post });
-  }
-  async fetchPosts({commit}) {
-    const posts = await this.$axios.$get(`/posts.json`)
-    commit('clearPosts')
-    Object.entries(posts)
-      .reverse()
-      .forEach(([id, content])) => {
-        commit('addPost', {
-          post: {
-            id,
-            ...content
-          }
-        })
-      }
   }
 };
