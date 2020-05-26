@@ -36,6 +36,23 @@ export default {
     } catch (e) {
       error({ statusCode: 404 })
     }
+  },
+  computed: {
+    post() {
+      return this.posts.find(p => p.id === this.$route.params.id)
+    },
+    ...mapGetters("posts", ["posts"])
+  },
+  filters: {
+    time(val) {
+      return moment(val).format("YYYY/MM/DD HH:mm:ss")
+    }
   }
 }
 </script>
+
+<style>
+.posts-page .el-table__row {
+  cursor: pointer;
+}
+</style>
