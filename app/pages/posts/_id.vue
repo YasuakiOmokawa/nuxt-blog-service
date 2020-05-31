@@ -23,14 +23,13 @@ import { mapGetters, mapActions } from "vuex"
 export default {
   async asyncData({ store, route, error }) {
     const { id } = route.params
-    if (store.getters(["posts/posts"].find(p => p.id === id))) {
+    if (store.getters["posts/posts"].find(p => p.id === id)) {
       return
     }
     try {
       await store.dispatch("posts/fetchPost", { id })
-      if (
-        !store.getters["posts/posts"].find(p => p.id === this.$route.params.id)
-      ) {
+      console.log(store.getters["posts/posts"])
+      if (!(store.getters["posts/posts"].find(p => p.id === this.$route.params.id))) {
         throw new Error("post not found")
       }
     } catch (e) {
@@ -39,7 +38,7 @@ export default {
   },
   computed: {
     post() {
-      return this.posts.find(p => p.id === route.params.id)
+      return this.posts.find(p => p.id === this.$route.params.id)
     },
     ...mapGetters("posts", ["posts"])
   },

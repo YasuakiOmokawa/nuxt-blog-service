@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     handleClick(post) {
-      this.$router.push(`posts/${post.id}`)
+      this.$router.push(`/posts/${post.id}`)
     }
   }
 }
