@@ -51,5 +51,6 @@ export const actions = {
       putData
     ]);
     commit("addPost", { post });
-  }
+  },
+  async addLikeToPost({commit}, {user, post})
 };
