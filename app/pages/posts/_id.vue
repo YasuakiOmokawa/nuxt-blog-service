@@ -7,6 +7,7 @@
           <small>by {{post.user.id}}</small>
         </div>
         <p>{{post.body}}</p>
+        <p class="text-right"
         <p class="text-right">{{post.created_at | time}}</p>
       </el-card>
       <p>
