@@ -52,5 +52,13 @@ export const actions = {
     ]);
     commit("addPost", { post });
   },
-  async addLikeToPost({commit}, {user, post})
+  async addLikeToPost({ commit }, { user, post }) {
+    post.likes.push({
+      created_at: moment().format(),
+      user_id: user.id,
+      post_id: post.id
+    });
+    const newPost = await this.$axios.$put(`/posts/${post.id}.json`, post);
+    commit("updatePost", { post: newPost });
+  }
 };
