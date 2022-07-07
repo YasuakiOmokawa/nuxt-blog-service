@@ -14,7 +14,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "element-ui": "^2.4.11",
     "lodash.clonedeep": "^4.5.0",
-    "moment": "^2.25.3",
+    "moment": "^2.29.4",
     "nuxt": "^2.0.0",
     "universal-cookie": "^4.0.3"
   },
